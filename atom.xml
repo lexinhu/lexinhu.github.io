@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>小白维基</title>
+  
+  <subtitle>语言，框架，架构，技术有关的一切都在这里。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://wiki.blanc.site/"/>
+  <updated>2021-04-07T09:11:23.814Z</updated>
+  <id>https://wiki.blanc.site/</id>
+  
+  <author>
+    <name>ryomahan</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL8常见问题</title>
+    <link href="https://wiki.blanc.site/archives/0.html"/>
+    <id>https://wiki.blanc.site/archives/0.html</id>
+    <published>2021-04-07T09:09:07.781Z</published>
+    <updated>2021-04-07T09:11:23.814Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="设置简单密码"><a href="#设置简单密码" class="headerlink" title="设置简单密码"></a>设置简单密码</h2><p>查看安全策略</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES LIKE &#39;validate_password%&#39;;</span><br></pre></td></tr></table></figure><p>修改变量</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set global validate_password.policy&#x3D;0;</span><br><span class="line">set global validate_password.length&#x3D;4;</span><br></pre></td></tr></table></figure><p>退出执行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure><p>为非 root 用户授权</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to &#39;mymaster&#39;@&#39;%&#39;;</span><br></pre></td></tr></table></figure><p>身份验证策略</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#39;mymaster&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;123456&#39;;</span><br></pre></td></tr></table></figure><p>主从复制</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CHANGE MASTER TO MASTER_HOST &#x3D; &#39;192.168.92.133&#39;,MASTER_USER&#x3D;&#39;mymaster&#39;, MASTER_PASSWORD&#x3D;&#39;123456&#39;, MASTER_LOG_FILE &#x3D; &#39;mysql-bin.000001&#39;, MASTER_LOG_POS &#x3D; 3220;</span><br><span class="line"></span><br><span class="line">stop slave;</span><br><span class="line">start slave;</span><br><span class="line">show slave status\G</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;设置简单密码&quot;&gt;&lt;a href=&quot;#设置简单密码&quot; class=&quot;headerlink&quot; title=&quot;设置简单密码&quot;&gt;&lt;/a&gt;设置简单密码&lt;/h2&gt;&lt;p&gt;查看安全策略&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="编程语言" scheme="https://wiki.blanc.site/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="MySQL" scheme="https://wiki.blanc.site/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/MySQL/"/>
+    
+    
+      <category term="MySQL8" scheme="https://wiki.blanc.site/tags/MySQL8/"/>
+    
+  </entry>
+  
+</feed>
